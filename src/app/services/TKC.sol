@@ -2,19 +2,19 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-contract MyCoin{
+contract TaskCoind{
     string public name;
     string public symbol;
     uint8 public decimals;
     uint256 public totalSupply;
-    mapping(address => uint256) public balanceOf; //Para checar el saldo de cada address
-    mapping(address => mapping(address => uint256)) public allowance; //Saber cuantos tokens mios puede gestionar otra cuenta.
+    mapping(address => uint256) public balanceOf; 
+    mapping(address => mapping(address => uint256)) public allowance; 
 
     constructor(){
-        name = "BaseballCoin";
-        symbol = "BSB";
-        decimals = 10;
-        totalSupply = 50 * (uint256(10) ** decimals);
+        name = "TaskCoin";
+        symbol = "TKC";
+        decimals = 0 ;
+        totalSupply = 100;
         balanceOf[msg.sender] = totalSupply;
     }
 
@@ -34,7 +34,7 @@ contract MyCoin{
         emit Approval(msg.sender, _spender, _value);
         return true;
     }
-
+    
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success){
         //El dueño tenga los tokens
         require(balanceOf[_from] >= _value);
@@ -46,5 +46,4 @@ contract MyCoin{
         emit Transfer(_from, _to, _value);
         return true;
     }
-
 }

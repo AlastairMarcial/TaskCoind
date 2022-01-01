@@ -42,8 +42,8 @@
         height: 60px;
         display: flex;
         align-items: center;
-        background-color: #bd202d;
-        color: white;
+        background-color: #174F75;
+        color: #C2DFF2;
         font-weight: 600;
     }
     
@@ -134,8 +134,8 @@
     }
     
     .card.highlight-card {
-        background-color: #bd202d;
-        color: white;
+        background-color: #174F75;
+        color: #C2DFF2;
         font-weight: 600;
         border: none;
         width: auto;
@@ -315,8 +315,8 @@
 
 <div class="content" role="main">
     <!-- Highlight Card -->
-    <div class="card highlight-card card-small">
-        <h1>Dapp Baseball Coins</h1>
+    <div class="card highlight-card card-medium">
+        <h1> Dapp TaskCoin</h1>
 
     </div>
     <!-- Links 
@@ -335,73 +335,65 @@
             <td>{{ this.from }}</td>
         </tr>
     </table>-->
+    <!--Se agrego codigo para llamar a los metodos necesarios-->
     <br><br><br>
-    <!--Aqui empiezo a modificar con lo mio-->
-    <br><br><br>
-    <div class="card">
+    <div class="card text-dark bg-info mb-3" style="max-width: 60rem;">
         <form [formGroup]="consultaSaldoForm">
-            <h1 class="tituloCarta">Consulta de Saldo</h1>
-            <br> Address: <input type="text" class="form-control" formControlName="addressConsultaSaldo">
-            <button (click)="checarBalance()">Checar Balance</button>
+            <h1 class="tituloCarta">Consultar saldo de tu wallet</h1>
+            <br><input type="text" class="form-control" placeholder="Address de la cuenta a consultar" formControlName="addressConsultaSaldo">
+            <br>
+            <button (click)="checarBalance()" class="btn btn-primary" >Checar Balance</button>
             <br>
             <p>Cantidad total: {{balanceOf}}</p>
         </form>
     </div>
 
+    
     <br><br><br>
-    <div class="card">
-        <form [formGroup]="consultaAprobacionExternaForm">
-            <h1 class="tituloCarta">Consulta de tokens aprobados para una cuenta:</h1>
-            <br> Address Propietaria: <input type="text" class="form-control" formControlName="addressPropietario">
-            <br> Address Aprobada: <input type="text" class="form-control" formControlName="addressAprovada">
-            <br><button (click)="checarAprovacion()">Checar Aprobación</button>
-            <br>
-            <p>Cantidad de token que está autorizado: {{tokensAprovados}}</p>
-        </form>
-    </div>
-
-    <br><br><br>
-    <div class="card">
-        <form [formGroup]="aprovarForm">
-            <h1 class="tituloCarta">Aprovar el uso de Tokens:</h1>
-            <br> Address que se Aprobará: <input type="text" class="form-control" formControlName="addressAprobar">
-            <br> Cantidad de Tokens: <input type="text" class="form-control" formControlName="cantidadTokens">
-            <br><button (click)="aprovarUsoDeTokens()">Aprobar</button>
-            <br>
-            <p>{{resultAprove}}</p>
-        </form>
-    </div>
-
-    <br><br><br>
-    <div class="card">
+    <div class="card text-dark bg-info mb-3" style="max-width: 60rem;">
         <form [formGroup]="transferirForm">
-            <h1 class="tituloCarta">Transefir Tokens:</h1>
-            <br> Address Destino: <input type="text" class="form-control" formControlName="addressDestino">
-            <br> Cantidad de Tokens: <input type="text" class="form-control" formControlName="cantidadTokens">
-            <br><button (click)="transferirTokens()">Transferir</button>
+            <h1 class="tituloCarta">Transefir Taskcoins:</h1>
+            <br><input type="text" class="form-control"  placeholder="Address de destino" formControlName="addressDestino">
+            <br><input type="text" class="form-control"  placeholder="Cantidad de taskcoind a enviar" formControlName="cantidadTokens">
+            <br><button (click)="transferirTokens()" class="btn btn-primary">Transferir</button>
             <br>
             <p>{{resultTransferencia}}</p>
         </form>
     </div>
 
+    
     <br><br><br>
-    <div class="card">
-        <form [formGroup]="transferirFromForm">
-            <h1 class="tituloCarta">Transefir Tokens que tienes aprobados:</h1>
-            <br> Address Remitente: <input type="text" class="form-control" formControlName="addressRemitenteFrom">
-            <br> Address Destino: <input type="text" class="form-control" formControlName="addressDestinoFrom">
-            <br> Cantidad de Tokens: <input type="text" class="form-control" formControlName="cantidadTokensFrom">
-            <br><button (click)="transferirTokensAprobados()">Transferir</button>
+    <div class="card text-dark bg-info mb-3" style="max-width: 60rem;">
+        <form [formGroup]="aprovarForm">
+            <h1 class="tituloCarta">Aprobar el uso de Taskcoins:</h1>
+            <br> <input type="text" class="form-control"  placeholder="Addres que se aprobara" formControlName="addressAprobar">
+            <br> <input type="text" class="form-control"  placeholder="Cantidad de taskcoins a aprobar" formControlName="cantidadTokens">
+            <br><button (click)="aprovarUsoDeTokens()" class="btn btn-primary">Aprobar</button>
             <br>
-            <p>{{resultTransferenciaAprobada}}</p>
+            <p>{{resultAprove}}</p>
+        </form>
+    </div>
+
+   <br><br><br>
+    <div class="card text-dark bg-info mb-3"  style="max-width: 60rem;">
+        <form [formGroup]="consultaAprobacionExternaForm">
+            <h1 class="tituloCarta">Taskcoins aprobados para una cuenta:</h1>
+            <br><input type="text" class="form-control" placeholder="Addres del propietario" formControlName="addressPropietario">
+            <br><input type="text" class="form-control" placeholder="Address que se aprobara" formControlName="addressAprovada">
+            <br><button (click)="checarAprovacion()" class="btn btn-primary">Consultar</button>
+            <br>
+            <p>Usted esta autorizando la cantidad de: {{tokensAprovados}} taskcoins</p>
         </form>
     </div>
 
 
+
+
     <!-- Footer -->
+    <!--
     <div class="card-container" #scrollframe style="overflow: scroll; height: 500px;">
         <div class="container">
-            <!--<div class="sends">
+            <div class="sends">
                 <h2>Transacciones Generadas con el Simulador de Pago de Venta</h2>
                 <table style="border: 1px solid;">
                     <thead>
@@ -421,6 +413,7 @@
                     </tbody>
                 </table>
             </div>-->
+            <!--
             <div class="card">
                 <div class="bsb">
                     <h2>Transacciones Generadas con el Simulador de Tokens BSB</h2>
@@ -442,9 +435,10 @@
                     </table>
                 </div>
             </div>
+            
         </div>
     </div>
-
+-->
 
 
 </div>
